@@ -1,4 +1,4 @@
-namespace DesignPatterns.StatePattern;
+namespace DesignPatterns.StatePattern.Demo;
 
 public class Canvas
 {

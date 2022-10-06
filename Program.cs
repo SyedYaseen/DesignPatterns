@@ -1,21 +1,28 @@
 ﻿using System.Threading.Channels;
+using DesignPatterns.AbstractFactory;
+using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.StatePattern;
+using DesignPatterns.StatePattern.Demo;
+using DesignPatterns.StatePattern.Demo.Tools;
 using DesignPatterns.StatePattern.Exercise;
 using DesignPatterns.StatePattern.Exercise.TravelModes;
-using DesignPatterns.StatePattern.Tools;
+
+//Abstract Factory Demo
+new NavBar(new AppleUi());
+new DropDown(new AndroidUi());
 
 
 //State Pattern - demo
-var canvas = new Canvas();
-canvas.setCurrentTool(new SelectionTool());
-canvas.mouseUp();
-canvas.mouseDown();
+// var canvas = new Canvas();
+// canvas.setCurrentTool(new SelectionTool());
+// canvas.mouseUp();
+// canvas.mouseDown();
 
 //State Pattern - Exercise
-var travelCalc = new TravelCalc(new Driving());
-travelCalc.GetTravelMode();
-travelCalc.GetETA();
+// var travelCalc = new TravelCalc(new Driving());
+// travelCalc.GetTravelMode();
+// travelCalc.GetETA();
 
 
 //Memento Pattern

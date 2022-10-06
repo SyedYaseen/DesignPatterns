@@ -1,4 +1,4 @@
-namespace DesignPatterns.StatePattern.Tools;
+namespace DesignPatterns.StatePattern.Demo.Tools;
 
 public class PenTool: ITool
 {
