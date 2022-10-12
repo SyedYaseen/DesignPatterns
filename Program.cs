@@ -1,6 +1,7 @@
 ﻿using System.Threading.Channels;
 using DesignPatterns.AbstractFactory;
 using DesignPatterns.AbstractFactory.Device;
+using DesignPatterns.BuilderPattern;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
@@ -9,8 +10,8 @@ using DesignPatterns.StatePattern.Exercise;
 using DesignPatterns.StatePattern.Exercise.TravelModes;
 
 //Abstract Factory Demo
-new NavBar(new AppleUi());
-new DropDown(new AndroidUi());
+// new NavBar(new AppleUi());
+// new DropDown(new AndroidUi());
 
 
 //State Pattern - demo
@@ -42,7 +43,11 @@ new DropDown(new AndroidUi());
 //
 // Console.WriteLine("Second time:" + editor.GetContent());
 
-
+var director = new Director();
+var builder = new ConcreteBuilderA();
+director.Builder = builder;
+director.CreateFullProduct();
+Console.WriteLine(builder.GetProduct().ListProducts());
 
 
 
