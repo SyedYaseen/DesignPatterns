@@ -10,6 +10,10 @@ using DesignPatterns.StatePattern.Demo;
 using DesignPatterns.StatePattern.Demo.Tools;
 using DesignPatterns.StatePattern.Exercise;
 using DesignPatterns.StatePattern.Exercise.TravelModes;
+using DesignPatterns.StrategyPattern;
+using DesignPatterns.StrategyPattern.Demo;
+using DesignPatterns.StrategyPattern.Demo.CompressionAlgo;
+using DesignPatterns.StrategyPattern.Demo.Filters;
 
 //Abstract Factory Demo
 // new NavBar(new AppleUi());
@@ -63,9 +67,12 @@ using DesignPatterns.StatePattern.Exercise.TravelModes;
 // var pdf = _builder.GetPdf();
 
 //Prototype Pattern
-IComponent circle1 = new Circle(5);
-var circle2 = circle1.Duplicate();
+// IComponent circle1 = new Circle(5);
+// var circle2 = circle1.Duplicate();
 
 
+//Strategy Pattern
+ImageStorage imgStore = new ImageStorage();
+imgStore.StoreImage(new Image("Cat photo"), new JPGCompression(), new VividFilter();
 
 
