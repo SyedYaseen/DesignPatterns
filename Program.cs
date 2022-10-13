@@ -13,7 +13,9 @@ using DesignPatterns.StatePattern.Exercise.TravelModes;
 using DesignPatterns.StrategyPattern;
 using DesignPatterns.StrategyPattern.Demo;
 using DesignPatterns.StrategyPattern.Demo.CompressionAlgo;
-using DesignPatterns.StrategyPattern.Demo.Filters;
+using DesignPatterns.StrategyPattern.Demo.Filters;using DesignPatterns.TemplateMethodPattern.DemoPractice;
+using DesignPatterns.TemplateMethodPattern.DemoPractice.Tasks;
+using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 //Abstract Factory Demo
 // new NavBar(new AppleUi());
@@ -72,7 +74,14 @@ using DesignPatterns.StrategyPattern.Demo.Filters;
 
 
 //Strategy Pattern
-ImageStorage imgStore = new ImageStorage();
-imgStore.StoreImage(new Image("Cat photo"), new JPGCompression(), new VividFilter();
+// ImageStorage imgStore = new ImageStorage();
+// imgStore.StoreImage(new Image("Cat photo"), new JPGCompression(), new VividFilter();
 
+//Template Method
+
+AuditTrail trail = new AuditTrail();
+Task genReport = new GenerateReport(trail);
+genReport.Execute();
+Task txn1 = new MakeTransaction(trail);
+txn1.Execute();
 
