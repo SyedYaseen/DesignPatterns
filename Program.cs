@@ -4,6 +4,7 @@ using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.MementoUndoPattern;
+using DesignPatterns.PrototypePattern.Demo;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
 using DesignPatterns.StatePattern.Demo.Tools;
@@ -52,14 +53,18 @@ using DesignPatterns.StatePattern.Exercise.TravelModes;
 // director.CreateFullProduct();
 // Console.WriteLine(builder.GetProduct().ListProducts());
 
-var _builder = new PdfBuilder();
-var presentation = new Presentation();
-presentation.AddSlide("This");
-presentation.AddSlide("That");
-presentation.AddSlide("What");
-presentation.Export(_builder);
+// var _builder = new PdfBuilder();
+// var presentation = new Presentation();
+// presentation.AddSlide("This");
+// presentation.AddSlide("That");
+// presentation.AddSlide("What");
+// presentation.Export(_builder);
+//
+// var pdf = _builder.GetPdf();
 
-var pdf = _builder.GetPdf();
+//Prototype Pattern
+IComponent circle1 = new Circle(5);
+var circle2 = circle1.Duplicate();
 
 
 
