@@ -2,6 +2,7 @@
 using DesignPatterns.AbstractFactory;
 using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.BuilderPattern;
+using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
@@ -43,11 +44,23 @@ using DesignPatterns.StatePattern.Exercise.TravelModes;
 //
 // Console.WriteLine("Second time:" + editor.GetContent());
 
-var director = new Director();
-var builder = new ConcreteBuilderA();
-director.Builder = builder;
-director.CreateFullProduct();
-Console.WriteLine(builder.GetProduct().ListProducts());
+
+// Builder pattern
+// var director = new Director();
+// var builder = new ConcreteBuilderA();
+// director.Builder = builder;
+// director.CreateFullProduct();
+// Console.WriteLine(builder.GetProduct().ListProducts());
+
+var _builder = new PdfBuilder();
+var presentation = new Presentation();
+presentation.AddSlide("This");
+presentation.AddSlide("That");
+presentation.AddSlide("What");
+presentation.Export(_builder);
+
+var pdf = _builder.GetPdf();
+
 
 
 
