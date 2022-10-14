@@ -4,6 +4,8 @@ using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.MementoUndoPattern;
+using DesignPatterns.ObserverPattern.DemoPractice.Observers;
+using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
 using DesignPatterns.PrototypePattern.Demo;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
@@ -78,10 +80,21 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 // imgStore.StoreImage(new Image("Cat photo"), new JPGCompression(), new VividFilter();
 
 //Template Method
+// AuditTrail trail = new AuditTrail();
+// Task genReport = new GenerateReport(trail);
+// genReport.Execute();
+// Task txn1 = new MakeTransaction(trail);
+// txn1.Execute();
 
-AuditTrail trail = new AuditTrail();
-Task genReport = new GenerateReport(trail);
-genReport.Execute();
-Task txn1 = new MakeTransaction(trail);
-txn1.Execute();
+//Observer pattern
+DataSource dataSource = new DataSource();
 
+//Data source is passed to create coupling between
+//datasource class and the observers to enable PULL style communication
+IObserver datatable = new DataTable(dataSource);
+IObserver flowchart = new FlowChart(dataSource);
+
+dataSource.AddObserver(datatable);
+dataSource.AddObserver(flowchart);
+
+dataSource.SetData("yaseen");
