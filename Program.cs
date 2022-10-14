@@ -3,6 +3,8 @@ using DesignPatterns.AbstractFactory;
 using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
+using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice;
+using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice.Handlers;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
@@ -87,14 +89,26 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 // txn1.Execute();
 
 //Observer pattern
-DataSource dataSource = new DataSource();
-
+// DataSource dataSource = new DataSource();
 //Data source is passed to create coupling between
 //datasource class and the observers to enable PULL style communication
-IObserver datatable = new DataTable(dataSource);
-IObserver flowchart = new FlowChart(dataSource);
+// IObserver datatable = new DataTable(dataSource);
+// IObserver flowchart = new FlowChart(dataSource);
+// dataSource.AddObserver(datatable);
+// dataSource.AddObserver(flowchart);
+// dataSource.SetData("yaseen");
 
-dataSource.AddObserver(datatable);
-dataSource.AddObserver(flowchart);
+//ChainOfResponsibility
+//Creating the chain of tasks to be performed in reverese order
+// Actual required flow: Auth --> Logger --> Compressor 
+var compressor = new Compression(null);
+var logger = new Logger(compressor);
+var auth = new Authentication(logger);
 
-dataSource.SetData("yaseen");
+//Passing first value on to the web server, so it can start working
+var webServer = new WebServer(auth);
+HttpRequest httpRequest = new HttpRequest("Admin", 1234);
+webServer.Handle(httpRequest);
+
+
+
