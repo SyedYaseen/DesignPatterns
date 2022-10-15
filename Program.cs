@@ -19,6 +19,9 @@ using DesignPatterns.StrategyPattern.Demo;
 using DesignPatterns.StrategyPattern.Demo.CompressionAlgo;
 using DesignPatterns.StrategyPattern.Demo.Filters;using DesignPatterns.TemplateMethodPattern.DemoPractice;
 using DesignPatterns.TemplateMethodPattern.DemoPractice.Tasks;
+using DesignPatterns.VisitorPattern.DemoPractice;
+using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes;
+using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes.Operations;
 using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 //Abstract Factory Demo
@@ -101,14 +104,21 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 //ChainOfResponsibility
 //Creating the chain of tasks to be performed in reverese order
 // Actual required flow: Auth --> Logger --> Compressor 
-var compressor = new Compression(null);
-var logger = new Logger(compressor);
-var auth = new Authentication(logger);
+// var compressor = new Compression(null);
+// var logger = new Logger(compressor);
+// var auth = new Authentication(logger);
+//
+// //Passing first value on to the web server, so it can start working
+// var webServer = new WebServer(auth);
+// HttpRequest httpRequest = new HttpRequest("Admin", 1234);
+// webServer.Handle(httpRequest);
 
-//Passing first value on to the web server, so it can start working
-var webServer = new WebServer(auth);
-HttpRequest httpRequest = new HttpRequest("Admin", 1234);
-webServer.Handle(httpRequest);
 
+//VisitorPattern
+HtmlDocument htmlDocument = new HtmlDocument();
+htmlDocument.AddNode(new AnchorNode());
+htmlDocument.AddNode(new ParagraphNode());
+
+htmlDocument.Execute(new HighLight());
 
 
