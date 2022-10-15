@@ -9,6 +9,7 @@ using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
 using DesignPatterns.PrototypePattern.Demo;
+using DesignPatterns.SingletonPattern.DemoPractice;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
 using DesignPatterns.StatePattern.Demo.Tools;
@@ -115,10 +116,17 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 //VisitorPattern
-HtmlDocument htmlDocument = new HtmlDocument();
-htmlDocument.AddNode(new AnchorNode());
-htmlDocument.AddNode(new ParagraphNode());
+// HtmlDocument htmlDocument = new HtmlDocument();
+// htmlDocument.AddNode(new AnchorNode());
+// htmlDocument.AddNode(new ParagraphNode());
+//
+// htmlDocument.Execute(new HighLight());
 
-htmlDocument.Execute(new HighLight());
 
+//SingletonPattern
+var configManager = ConfigManager.GetInstance();
+configManager.SetConfig(1, "Yaseen");
 
+var configManager2 = ConfigManager.GetInstance();
+
+Console.WriteLine(configManager2.GetConfig(2));
