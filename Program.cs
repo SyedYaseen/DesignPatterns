@@ -5,6 +5,7 @@ using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice.Handlers;
+using DesignPatterns.CompositePattern.DemoPractice;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
@@ -23,6 +24,7 @@ using DesignPatterns.TemplateMethodPattern.DemoPractice.Tasks;
 using DesignPatterns.VisitorPattern.DemoPractice;
 using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes;
 using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes.Operations;
+using File = DesignPatterns.CompositePattern.DemoPractice.File;
 using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 //Abstract Factory Demo
@@ -124,9 +126,21 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 //SingletonPattern
-var configManager = ConfigManager.GetInstance();
-configManager.SetConfig(1, "Yaseen");
+// var configManager = ConfigManager.GetInstance();
+// configManager.SetConfig(1, "Yaseen");
+//
+// var configManager2 = ConfigManager.GetInstance();
+//
+// Console.WriteLine(configManager2.GetConfig(2));
 
-var configManager2 = ConfigManager.GetInstance();
+//Composite Pattern
+File file1 = new File();
+File file2 = new File();
+Group group1 = new Group();
+group1.AddItems(file1);
+group1.AddItems(file2);
+// group1.Render();
 
-Console.WriteLine(configManager2.GetConfig(2));
+Group group2 = new Group();
+group2.AddItems(group1);
+group2.Render();
