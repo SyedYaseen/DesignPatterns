@@ -1,6 +1,8 @@
 ﻿using System.Threading.Channels;
 using DesignPatterns.AbstractFactory;
 using DesignPatterns.AbstractFactory.Device;
+using DesignPatterns.AdapterPattern.DemoPractice;
+using DesignPatterns.AdapterPattern.DemoPractice.Filters.ThirdPartyFilters;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice;
@@ -25,6 +27,7 @@ using DesignPatterns.VisitorPattern.DemoPractice;
 using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes;
 using DesignPatterns.VisitorPattern.DemoPractice.HtmlNodes.Operations;
 using File = DesignPatterns.CompositePattern.DemoPractice.File;
+using Image = DesignPatterns.AdapterPattern.DemoPractice.Image;
 using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 //Abstract Factory Demo
@@ -134,13 +137,19 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 // Console.WriteLine(configManager2.GetConfig(2));
 
 //Composite Pattern
-File file1 = new File();
-File file2 = new File();
-Group group1 = new Group();
-group1.AddItems(file1);
-group1.AddItems(file2);
-// group1.Render();
+// File file1 = new File();
+// File file2 = new File();
+// Group group1 = new Group();
+// group1.AddItems(file1);
+// group1.AddItems(file2);
+// // group1.Render();
+//
+// Group group2 = new Group();
+// group2.AddItems(group1);
+// group2.Render();
 
-Group group2 = new Group();
-group2.AddItems(group1);
-group2.Render();
+
+//Adapter pattern
+Image img = new Image();
+ImagePreview imagePreview = new ImagePreview(img);
+imagePreview.ApplyFilter(new CaramelAdapter(new Caramel()));
