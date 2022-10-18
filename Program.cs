@@ -8,6 +8,8 @@ using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice.Handlers;
 using DesignPatterns.CompositePattern.DemoPractice;
+using DesignPatterns.Decorator_Pattern;
+using DesignPatterns.Decorator_Pattern.Decorators;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
@@ -150,6 +152,14 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 //Adapter pattern
-Image img = new Image();
-ImagePreview imagePreview = new ImagePreview(img);
-imagePreview.ApplyFilter(new CaramelAdapter(new Caramel()));
+// Image img = new Image();
+// ImagePreview imagePreview = new ImagePreview(img);
+// imagePreview.ApplyFilter(new CaramelAdapter(new Caramel()));
+
+
+//Decorator Pattern
+var comp = new ConcreteComponent();
+var header = new AddHeader(comp);
+var footer = new AddFooter(header);
+footer.Operation();
+
