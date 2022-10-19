@@ -3,6 +3,8 @@ using DesignPatterns.AbstractFactory;
 using DesignPatterns.AbstractFactory.Device;
 using DesignPatterns.AdapterPattern.DemoPractice;
 using DesignPatterns.AdapterPattern.DemoPractice.Filters.ThirdPartyFilters;
+using DesignPatterns.BridgePattern.FeatureHierarchy;
+using DesignPatterns.BridgePattern.ImplementationHierarchy;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.BuilderPattern.ExportPowerPoint;
 using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice;
@@ -166,11 +168,16 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 //Flyweight Pattern
-var pointsService = new PointsService(new PointIconFactory());
-var points = pointsService.GetPoints();
+// var pointsService = new PointsService(new PointIconFactory());
+// var points = pointsService.GetPoints();
+//
+// foreach (var point in points)
+// {
+//     point.Draw();
+//     
+// }
 
-foreach (var point in points)
-{
-    point.Draw();
-    
-}
+
+// Bridge Pattern
+var basicRemote = new BasicRemote(new SonyTV());
+basicRemote.TurnOff();
