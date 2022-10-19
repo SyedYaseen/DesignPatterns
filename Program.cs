@@ -10,6 +10,7 @@ using DesignPatterns.ChainOfResponsibilityPattern.DemoPractice.Handlers;
 using DesignPatterns.CompositePattern.DemoPractice;
 using DesignPatterns.Decorator_Pattern;
 using DesignPatterns.Decorator_Pattern.Decorators;
+using DesignPatterns.FlyWeightPattern;
 using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
@@ -158,8 +159,18 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 //Decorator Pattern
-var comp = new ConcreteComponent();
-var header = new AddHeader(comp);
-var footer = new AddFooter(header);
-footer.Operation();
+// var comp = new ConcreteComponent();
+// var header = new AddHeader(comp);
+// var footer = new AddFooter(header);
+// footer.Operation();
 
+
+//Flyweight Pattern
+var pointsService = new PointsService(new PointIconFactory());
+var points = pointsService.GetPoints();
+
+foreach (var point in points)
+{
+    point.Draw();
+    
+}
