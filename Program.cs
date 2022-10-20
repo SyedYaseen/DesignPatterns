@@ -17,6 +17,7 @@ using DesignPatterns.MementoUndoPattern;
 using DesignPatterns.ObserverPattern.DemoPractice.Observers;
 using DesignPatterns.ObserverPattern.DemoPractice.Subjects;
 using DesignPatterns.PrototypePattern.Demo;
+using DesignPatterns.ProxyPattern;
 using DesignPatterns.SingletonPattern.DemoPractice;
 using DesignPatterns.StatePattern;
 using DesignPatterns.StatePattern.Demo;
@@ -179,5 +180,17 @@ using Task = DesignPatterns.TemplateMethodPattern.DemoPractice.Task;
 
 
 // Bridge Pattern
-var basicRemote = new BasicRemote(new SonyTV());
-basicRemote.TurnOff();
+// var basicRemote = new BasicRemote(new SonyTV());
+// basicRemote.TurnOff();
+
+// Proxy Pattern
+Library library = new Library();
+string[] names = { "Harry", "Potter", "Azkaban" };
+
+foreach (var name in names)
+{
+    library.AddEbook(new SubsCheckProxy(name));
+}
+
+library.ReadBook("Harry");
+
